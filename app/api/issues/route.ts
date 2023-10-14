@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { string, z } from "zod";
+import { string } from "zod";
 import prisma from "@/prisma/client";
+import { createIssueShchema } from "../../dto/issueShchema";
 
-const createIssueShchema = z.object({
-  title: z.string().min(1, "Title is required.").max(255),
-  description: z.string().min(1, "Description is required."),
-});
 export async function POST(requist: NextRequest) {
   const body = await requist.json();
   const validation = createIssueShchema.safeParse(body);
