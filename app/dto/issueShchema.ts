@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const createIssueShchema = z.object({
+export const issueShchema = z.object({
   title: z.string().min(1, "Title is required.").max(255),
   description: z.string().min(1, "Description is required.").max(5555),
 });
